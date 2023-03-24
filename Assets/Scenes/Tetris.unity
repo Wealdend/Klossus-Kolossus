@@ -463,6 +463,7 @@ MonoBehaviour:
   - tetromino: 0
     tile: {fileID: 11400000, guid: eab4bbb35a98c714bb81d89e2a5bb11d, type: 2}
     cells: []
+  boardSize: {x: 10, y: 20}
   spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1082363401
 Grid:
@@ -693,6 +694,7 @@ MonoBehaviour:
   - tetromino: 6
     tile: {fileID: 11400000, guid: eab4bbb35a98c714bb81d89e2a5bb11d, type: 2}
     cells: []
+  boardSize: {x: 10, y: 20}
   spawnPosition: {x: -1, y: 8, z: 0}
 --- !u!114 &1303463117
 MonoBehaviour:
