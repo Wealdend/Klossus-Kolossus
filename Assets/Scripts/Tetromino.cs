@@ -1,9 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class Tetromino : MonoBehaviour
+public enum Tetromino
 {
-
-
+    I,
+    O,
+    T,
+    J,
+    L,
+    S,
+    Z,
 }
+
+public struct TetrominoData
+{
+    public Tetromino Tetromino;
+    public Tile tile;
+}
+
