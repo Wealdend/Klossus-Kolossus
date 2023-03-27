@@ -17,10 +17,12 @@ public struct TetrominoData
     public Tetromino tetromino;
     public Tile tile;
     public Vector2Int[] cells;
+    public Vector2Int[,] wallKicks { get; private set; }
 
     public void Intialize()
     {
         this.cells = Data.Cells[this.tetromino];
+        this.wallKicks = Data.WallKicks[this.tetromino];
     }
 }
 
