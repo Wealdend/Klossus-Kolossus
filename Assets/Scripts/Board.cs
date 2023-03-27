@@ -4,11 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
 {
-    public Tilemap Tilemap { get; private set; }
+    public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominos;
     public Vector2Int boardSize = new Vector2Int(10, 20);
-    public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
+    public Vector3Int spawnPosition;
 
     public RectInt Bounds
     {
@@ -21,7 +21,7 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
-        this.Tilemap = GetComponentInChildren<Tilemap>();
+        this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
         for (int i = 0; i < this.tetrominos.Length; i++)
 
@@ -50,7 +50,7 @@ public class Board : MonoBehaviour
         for (int i = 0; i < piece.cells.Length; i++)
         {
             Vector3Int tilePosition = piece.cells[i] + piece.position;
-            this.Tilemap.SetTile(tilePosition, piece.data.tile);
+            this.tilemap.SetTile(tilePosition, piece.data.tile);
         }
     }
     public void Clear(Piece piece)
@@ -58,7 +58,7 @@ public class Board : MonoBehaviour
         for (int i = 0; i < piece.cells.Length; i++)
         {
             Vector3Int tilePosition = piece.cells[i] + piece.position;
-            this.Tilemap.SetTile(tilePosition, null);
+            this.tilemap.SetTile(tilePosition, null);
         }
     }
 
@@ -75,7 +75,7 @@ public class Board : MonoBehaviour
                 return false;
             }
 
-            if (this.Tilemap.HasTile(tilePosition))
+            if (this.tilemap.HasTile(tilePosition))
             {
                 return false;
             }

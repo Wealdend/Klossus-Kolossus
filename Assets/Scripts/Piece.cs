@@ -1,10 +1,11 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    public Board board { get; private set; }
+	public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int[] cells { get; private set; }
     public Vector3Int position { get; private set; }
@@ -33,12 +34,17 @@ public class Piece : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) ||  Input.GetKeyUp(KeyCode.LeftArrow)) 
         {
             Move(Vector2Int.left);
-        } else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
         {
             Move(Vector2Int.right);
 
         }
-        this.board.Set(this);
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+			Move(Vector2Int.down);
+		}
+		this.board.Set(this);
     }
 
     private bool Move(Vector2Int translation)
@@ -53,6 +59,7 @@ public class Piece : MonoBehaviour
         {
             this.position = newPosition;
         }
+
 
         return valid;
     }
