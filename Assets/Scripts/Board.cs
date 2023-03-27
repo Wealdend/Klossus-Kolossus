@@ -1,9 +1,12 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.Tilemaps;
+
+
 
 public class Board : MonoBehaviour
 {
@@ -14,9 +17,44 @@ public class Board : MonoBehaviour
     public Vector3Int spawnPosition1 = new Vector3Int(-1, 8, 0);
   
     public Vector2Int boardSize = new Vector2Int(10, 20);
-    public int clearedLines { get; private set; }
 
+    public int scoreOneLine = 40;
 
+    public int scoreTwoLines = 100;
+    public int scoreThreeLines = 300;
+    public int scoreFourLines = 1200;
+
+    private int clearedLines = 0;
+    public TMP_Text hud_score;
+
+    private int currentScore = 0;
+    public void UpdateScore()
+    {
+        if (clearedLines > 0)
+        {
+            if(clearedLines == 1) {
+                currentScore += scoreOneLine;
+            }
+            else if(clearedLines ==2) {
+                currentScore += scoreTwoLines;
+            }
+            else if(clearedLines ==3) {
+                currentScore += scoreThreeLines;
+            }
+            else if(clearedLines ==4) { 
+                currentScore += scoreFourLines;
+            }
+            clearedLines = 0;
+            UpdateUI();
+        }
+        
+    }
+
+    public void UpdateUI()
+    {
+        hud_score.text = currentScore.ToString();
+    }
+  
     public RectInt Bounds
     {
         get
@@ -125,7 +163,7 @@ public class Board : MonoBehaviour
             else
                 row++;
         }
-
+        UpdateScore();
 
     }
 
