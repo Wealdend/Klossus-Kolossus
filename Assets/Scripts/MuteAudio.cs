@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class MuteAudio : MonoBehaviour
 {
-    //[SerializeField] Image soundOnIcon;
-    //[SerializeField] Image soundOffIcon;
+    [SerializeField] Image soundOnIcon;
+    [SerializeField] Image soundOffIcon;
     private bool muted = false;
 
     private void Start()
@@ -20,7 +20,7 @@ public class MuteAudio : MonoBehaviour
         {
             Load();
         }
-        //UpdateButton();
+        UpdateButtonIcon();
         AudioListener.pause = muted;
     }
 
@@ -38,21 +38,23 @@ public class MuteAudio : MonoBehaviour
         }
 
         Save();
+        UpdateButtonIcon();
     }
 
-    //private void UpdateButton()
-    //{
-    //    if (muted == false)
-    //    {
-    //        soundOnIcon.enabled = true;
-    //        soundOffIcon.enabled = false;
-    //    }
-    //    else
-    //    {
-    //        soundOnIcon.enabled= false;
-    //        soundOffIcon.enabled= true;
-    //    }
-    //}
+    private void UpdateButtonIcon()
+    {
+        if (muted == false)
+        {
+            soundOnIcon.enabled = true;
+            soundOffIcon.enabled = false;
+        }
+        else
+        {
+            soundOnIcon.enabled = false;
+            soundOffIcon.enabled = true;
+        }
+        
+    }
 
     private void Load()
     {
